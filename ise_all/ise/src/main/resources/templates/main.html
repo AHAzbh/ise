@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+
+    <link rel="stylesheet" href="../static/lshStyle.css">
+
+    <script type="text/javascript" src="../static/jquery-3.5.1.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        $(function(){
+            var goodList = [[${goods}]];
+            console.log(goodList);
+            var area = document.getElementById("good-base-area");
+            var size = goodList.length;
+            var i = 0;
+            while(i < size){
+                var ul = document.createElement("ul");
+                ul.setAttribute("style","list-style-type:none");
+                for(var j = 0; j < 5 && i + j < size; ++j){
+                    var li = document.createElement("li");
+                    li.setAttribute("class","leftLi");
+                    li.setAttribute("style","padding: 10px;margin: auto;width: 200px;");
+                    var ul0= document.createElement("ul");
+                    var li0 = document.createElement("li");
+                    var li2 = document.createElement("li");
+                    var li1 = document.createElement("li");
+                    var img = document.createElement("img");
+                    //li1.setAttribute("class","leftLi");
+                    li1.setAttribute("style","padding: 0");
+                    ul0.setAttribute("style","border: 1px solid #666")
+                    //var li0 = document.createElement("li");
+                    //li0.setAttribute("class","leftLi");
+                    li0.setAttribute("style","padding: 0;text-align: center;margin: auto;width: 200px;height: 30px");
+                    li0.append(goodList[i+j]["gname"]);
+                    ul0.append(li0);
+                    var a0 = document.createElement("div");
+                    //a0.setAttribute("href","/buyer/searchGoodsById?id="+goodList[i+j]["id"]);
+                    a0.setAttribute("style","width: 200px;height: 200px;padding: 0");
+                    img.setAttribute("src","../static/images/"+goodList[i+j]["img"]+".jpg");
+                    //img.setAttribute("src","../static/images/0001_1.jpg");
+                    img.setAttribute("height","200");
+                    img.setAttribute("width","200");
+                    img.setAttribute("alt","");
+                    a0.append(img);
+                    li1.append(a0);
+                    ul0.append(li1);
+                    //li.append(ul1);
+                    //var li2 = document.createElement("li");
+                    li2.setAttribute("class","leftLi");
+                    li2.setAttribute("style","padding: 5px;text-align: center;margin: auto;width: 200px;height: 30px");
+                    if(goodList[i+j]["num"] > 0) {
+                        li2.append(" 数量 : " + goodList[i + j]["num"]);
+                    }else{
+                        li2.append("已售罄");
+                    }
+                    ul0.append(li2);
+                    //li.append(ul2);
+                    var li3 = document.createElement("li");
+                    li3.setAttribute("class","leftLi");
+                    li3.setAttribute("style","padding: 0px;text-align: center;margin: auto;width: 200px;height: 40px");
+                    var now = new Date();
+                    var time = new Date(goodList[i+j]["time"]);
+                    if(time <= now.getTime()){
+                        if(goodList[i+j]["num"] > 0) {
+                            li3.append(BuildButton(goodList[i + j]["gid"]));
+                        }else{
+                            li3.append(" ");
+                        }
+                    }else{
+                        li3.append("开放购买时间："+time);
+                    }
+                    ul0.append(li3);
+                    li.append(ul0);
+                    ul.append(li);
+                }
+
+                area.append(ul);
+                i += j;
+            }
+
+
+        });
+
+        function BuildButton(gid){
+            var button = document.createElement("button");
+            button.setAttribute("class", "myButton");
+            button.setAttribute("type", "button");
+            button.setAttribute("onclick", "buy(\'" + gid +  "\'" + ")");
+            button.append("购买");
+            return button;
+        }
+
+        function buy(id){
+            $.post("/buy",{gid:id,num:1},function(result){
+                //console.log("id " + id + " np : " + nextPoint);
+                var msg = $("#msg");
+                msg.empty();
+                msg.append(result);
+                //return search();
+            });
+
+        }
+    </script>
+
+</head>
+<body>
+
+
+<div class="topDiv">
+    <ul style="list-style-type: none">
+        <li class="leftLi">
+            <a href="/main" title="主页" style="width: 64px;height: 36px;padding: 0;border: none">
+                <img src="../static/images/main.jpg" height="36" width="64" alt="主页"/>
+            </a>
+        </li>
+        <li class="rightLi" >
+            <a style="width: 50px;height: 28px;text-align: center" href="/logout">退出</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="myDiv" >
+    <ul >
+        <li th:each="item,url:${#httpSession.getAttribute('urlMap')}">
+            <a style="width: 100px" th:href="${url.current.key}" th:text="${url.current.value}"></a>
+        </li>
+    </ul>
+</div>
+
+
+<div>
+    <ul style="list-style-type:none;">
+
+        <li class="leftLi">
+            <div >
+                <p id="msg" style="text-align: center;margin: auto;width: 1200px;"></p>
+            </div>
+            <div class="leftDiv" id="good-base-area">
+
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+</body>
+</html>

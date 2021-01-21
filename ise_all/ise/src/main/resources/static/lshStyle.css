@@ -1,0 +1,281 @@
+fieldset{
+    background-color: lightblue;
+    margin-bottom: 12px;
+    overflow : hidden;
+    padding: 20px;
+    text-align: center;
+}
+
+
+input{
+    font-size: inherit;
+}
+
+ul {
+    /*list-style-type:none;*/
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+
+.leftLi {
+    float:left;
+    margin: auto;
+    list-style-type: none;
+    display: inline;
+    /*margin-left: 10px;
+    margin-top: 50px;*/
+}
+.rightLi{
+    float: right;
+    margin: auto;
+    list-style-type: none;
+    display: inline;
+    /*margin-right: 10px;
+    margin-top: 50px;*/
+}
+a:link,a:visited {
+    display:block;
+    width:200px;
+    font-weight:bold;
+    color: #666666;
+    background-color:#bebebe;
+    text-align:center;
+    padding:4px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+a:hover,a:active {
+    background-color:#e9686b;
+}
+/*div{
+    width: max-content;
+    margin: auto;
+}*/
+
+.leftDiv{
+    width: max-content;
+    padding: 30px;
+    float: left;
+    margin: auto;
+    /*margin-left: 10px;
+    margin-top: 50px;*/
+}
+
+.midDiv {
+    width: max-content;
+    padding: 30px;
+    float: left;
+    margin: auto;
+    /*margin-left: 10px;
+    margin-top: 50px;*/
+}
+
+.myDiv{
+    width: max-content;
+    margin: auto;
+}
+
+.topDiv{
+    margin: 0;
+    padding: 0;
+    height: 36px;
+    background-color: #E4E4E4;
+}
+
+form{
+    display: block;
+}
+p{
+    font-family: '微软雅黑', serif;
+}
+
+.myButton , .mySubmit{
+    background: #E27575;
+    border: none;
+    padding: 5px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+    /*border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 2px 8px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    background-color: #e9686b;
+    text-align: center;
+    transition: .2s ease-out;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.24);
+    font-family: '微软雅黑',serif;
+    border-radius: 2px;*/
+}
+.searchInput{
+    border: none;
+    width: 300px;
+    display: inline-block;
+    vertical-align: middle;
+    outline: 0;
+    padding: 5px;
+    background-color: #bebebe;
+    overflow: hidden;
+    text-decoration: none;
+    transition: .2s ease-out;
+    white-space: nowrap;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    /*box-shadow: 0px 2px 6px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.24);*/
+    font-family: '微软雅黑', serif;
+    /*border-radius: 2px;*/
+}
+
+
+.basic-grey {
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 1000px;
+    background: #F7F7F7;
+    padding: 25px 15px 25px 10px;
+    font: 15px Georgia, '微软雅黑', serif;
+    /*width: inherit;*/
+    color: #888;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #E4E4E4;
+}
+.basic-grey h1 {
+    font-size: 25px;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom:1px solid #E4E4E4;
+    margin: -10px -15px 30px -10px;;
+    color: #888;
+}
+.basic-grey h1>span {
+    display: block;
+    font-size: 11px;
+}
+.basic-grey label {
+    display: block;
+    height: 50px;
+    margin: auto;
+    width: max-content;
+}
+.basic-grey label>span {
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #888;
+}
+.basic-grey input[type="text"],.basic-grey input[type="number"],
+.basic-grey input[type="password"] ,
+.basic-grey select , .basic-grey textarea{
+    border: 1px solid #bebebe;
+    color: #666;
+    height: 30px;
+    /*margin-bottom: 16px;*/
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 5px;
+    width: 200px;
+    font-size: 15px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+.basic-grey textarea{
+    padding: 5px 3px 3px 5px;
+}
+.basic-grey select {
+    width: 210px;
+    /*appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;*/
+    text-indent: 0.01px;
+    text-overflow: '';
+    height: 35px;
+    line-height: 25px;
+}
+.basic-grey textarea{
+    height:100px;
+    width: 300px;
+}
+.basic-grey input[type="submit"] {
+    background: #E27575;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+}
+.basic-grey .button:hover {
+    background: #CF7A7A
+}
+
+
+table
+{
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+}
+table td, table th
+{
+    border: 1px solid #cad9ea;
+    color: #666;
+    height: 30px;
+    width: max-content;
+    min-width: 100px;
+}
+table thead th
+{
+    background-color: #bebebe;
+    width: max-content;
+}
+table tr:nth-child(odd)
+{
+    background: #fff;
+}
+table tr:nth-child(even)
+{
+    background: #F5FAFA;
+}
+
+.mySelect{
+    border: 1px solid #666;
+    color: #666;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 70%;
+    font-size: 16px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    line-height: 25px;
+}
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎</title>
+    <link rel="stylesheet" href="../static/lshStyle.css" type="text/css">
+    <script type="text/javascript">
+        //刷新验证码
+        function refreshCode() {
+            var img = document.getElementById("code");
+            img.src = "/validateCode?time=" + new Date();
+        }
+        //数据格式验证
+        function login(){
+            var uid = document.getElementById("id").value;
+            //var uname = document.getElementById("name").value;
+            var upwd = document.getElementById("password").value;
+            //var upwd2 = document.getElementById("password2").value;
+            //var rip = /^[a-z0-9A-Z\u4e00-\u9fa5]+$/;
+            var rio = /^[0-9a-zA-Z]+$/;
+            if(uid.length !== 6 || !rio.test(uid)){
+                alert("用户名为字母与数字的6位组合");
+                return false;
+            }
+            if(upwd.length > 15){
+                alert("密码过长，最多为15位密码");
+                return false;
+            }
+
+            if(!rio.test(upwd)){
+                alert("密码包含非法字符")
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+</head>
+<body>
+<div style="margin-top: 10%">
+    <p th:text="${msg}" style="text-align: center"></p>
+
+    <form action="/toLogin"  method="post" class="basic-grey">
+        <label style="text-align: center">
+            <input type="text" name="uname" id="id" placeholder="用户名username">
+        </label>
+        <label style="text-align: center">
+            <input type="password" name="password" id="password" placeholder="密码password">
+        </label >
+        <label style="text-align: center">
+            <input type="text" name="validateCode" placeholder="验证码validateCode">
+        </label >
+        <label style="text-align: center">
+            <input type="submit" value="登录" onclick="return login()">
+        </label>
+        <label>
+            <img id="code" src="/validateCode" alt="">
+            <a href="javascript:refreshCode();">看不清，换一张</a>
+        </label>
+    </form>
+    <div style="text-align: center;width:100%; ">
+        <a href="/register" style="text-align: center;margin:auto">注册</a>
+    </div>
+</div>
+
+</body>
+
+</html>

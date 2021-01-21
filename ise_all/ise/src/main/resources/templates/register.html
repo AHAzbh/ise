@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="../static/lshStyle.css">
+
+    <script type="text/javascript" src="../static/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        //注册输入数据格式判断
+        function register(){
+            var uid = document.getElementById("id").value;
+            //var uname = document.getElementById("name").value;
+            var upwd = document.getElementById("password").value;
+            var upwd2 = document.getElementById("password2").value;
+            //var rip = /^[a-z0-9A-Z\u4e00-\u9fa5]+$/;
+            var rio = /^[0-9a-zA-Z]+$/;
+            if(uid.length !== 6 || !rio.test(uid)){
+                alert("用户名为字母与数字的6位组合");
+                return false;
+            }
+            if(upwd.length > 15){
+                alert("密码过长，最多为15位密码");
+                return false;
+            }
+
+            if(!rio.test(upwd)){
+                alert("密码包含非法字符")
+                return false;
+            }
+            if(upwd!==upwd2){
+                alert("两次输入密码不同，请重新输入");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+<div style="width: 100%;margin-top: 100px">
+    <p th:text="${msg}" style="text-align: center">1</p>
+    <form action="/toRegister" method="post" class="basic-grey">
+        <label>
+            <span>用户名:</span>
+            <input type="text" name="uname" id="id" placeholder="请输入字母与数字的6位组合">
+        </label>
+        <label>
+            <span>密码:</span>
+            <input type="password" id="password" name="password" placeholder="请输入密码">
+        </label>
+        <label>
+            <span>确认密码:</span>
+            <input type="password" id="password2"  placeholder="请确认密码">
+        </label>
+        <label style="text-align: center">
+            <input type="submit" value="注册" onclick="return register()">
+        </label>
+
+
+    </form>
+
+</div>
+</body>
+</html>
